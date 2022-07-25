@@ -6,6 +6,8 @@ var options = { //지도를 생성할 때 필요한 기본 옵션
 
 var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 
+displayLevel();
+
 /**
  * 지도 중심 이동
  */
@@ -21,4 +23,32 @@ function setCenter(){
 function panTo(){
     var moveLatLon = new kakao.maps.LatLng(33.452613, 126.570888);
     map.panTo(moveLatLon);
+}
+
+/**
+ * 지도 레벨 내리기
+ */
+function zoomIn(){
+    //현재지도 레벨 get
+    var level = map.getLevel();
+    //지도를 1레벨 내리기(지도가 확대됨)
+    map.setLevel(level - 1);
+    displayLevel();
+}
+
+/**
+ * 지도 레벨 올리기
+ */
+function zoomOut(){
+    var level = map.getLevel();
+    map.setLevel(level + 1);
+    displayLevel();
+}
+
+/**
+ * 지도 레벨 표시
+ */
+function displayLevel(){
+    var levelEl = document.getElementById('maplevel');
+    levelEl.innerHTML = '현재 지도레벨은 ' + map.getLevel() + ' 레벨 입니다.';
 }

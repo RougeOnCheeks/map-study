@@ -12,6 +12,11 @@
         <button onclick="panTo()">지도 중심좌표 부드럽게 이동</button>
     </p>
 
+    <p>
+        <button onclick="zoomIn()">- 1</button>
+        <button onclick="zoomOut()">+ 1</button>
+        <span id="maplevel"></span>
+    </p>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6c277efa157f10bac26a42539398589&libraries=services,clusterer,drawing"></script>
     <script th:src="@{/js/main/kakaoMain.js}"></script>
 </body>
