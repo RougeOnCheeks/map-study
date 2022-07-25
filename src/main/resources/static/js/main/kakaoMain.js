@@ -8,6 +8,7 @@ var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리
 
 displayLevel();
 
+getInfo();
 /**
  * 지도 중심 이동
  */
@@ -51,4 +52,30 @@ function zoomOut(){
 function displayLevel(){
     var levelEl = document.getElementById('maplevel');
     levelEl.innerHTML = '현재 지도레벨은 ' + map.getLevel() + ' 레벨 입니다.';
+}
+
+function getInfo(){
+    var center = map.getCenter();
+
+    var level = map.getLevel();
+
+    var mapTypeId = map.getMapTypeId();
+
+    var bounds = map.getBounds();
+
+    var swLatLng = bounds.getSouthWest();
+
+    var neLatLng = bounds.getNorthEast();
+
+    var boundsStr = bounds.toString();
+
+    var message = `지도 중심좌표: 위도 ${center.getLat()}, 경도 ${center.getLng()}\n`;
+        message += `지도 레벨: ${level}\n`;
+        message += `지도 타입: ${mapTypeId}\n`;
+        message += `지도의 남서쪽 좌표: ${swLatLng.getLat()}, ${swLatLng.getLng()}\n`;
+        message += `지도의 북동쪽 좌표: ${neLatLng.getLat()}, ${neLatLng.getLng()}\n`;
+        message += `영역 정보 ((남, 서), (북, 동)): ${boundsStr}`;
+
+    var messageEl = document.getElementById("getInfo");
+    messageEl.innerText = message;
 }
