@@ -26,6 +26,10 @@
         <button onclick="setDraggable(false)">지도 드래그 이동 끄기</button>
         <button onclick="setDraggable(true)">지도 드래그 이동 켜기</button>
     </p>
+    <p>
+        <button onclick="setZoomable(false)">지도 확대/축소 끄기</button>
+        <button onclick="setZoomable(true)">지도 확대/축소 켜기</button>
+    </p>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6c277efa157f10bac26a42539398589&libraries=services,clusterer,drawing"></script>
     <script th:src="@{/js/main/kakaoMain.js}"></script>
 </body>

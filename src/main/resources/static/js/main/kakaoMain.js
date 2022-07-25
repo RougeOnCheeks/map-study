@@ -15,6 +15,11 @@ var zoomControl = new kakao.maps.ZoomControl();
 map.addControl(zoomControl, kakao.maps.ControlPosition.CENTERRIGHT);
 //TOPRIGHT, BOTTOMRIGHT 등으로 표시될 위치 정의
 
+//교통정보 표시하기
+map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+//교통정보 제거하기
+//map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+
 displayLevel();
 
 getInfo();
@@ -89,6 +94,18 @@ function getInfo(){
     messageEl.innerText = message;
 }
 
+/**
+ * 지도 이동(드래그) 막기
+ * @param draggable
+ */
 function setDraggable(draggable){
     map.setDraggable(draggable);
+}
+
+/**
+ * 지도 확대 축소 막기
+ * @param zoomable
+ */
+function setZoomable(zoomable){
+    map.setZoomable(zoomable);
 }
