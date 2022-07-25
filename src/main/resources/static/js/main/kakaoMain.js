@@ -105,6 +105,9 @@ function setZoomable(zoomable){
     map.setZoomable(zoomable);
 }
 
+/**
+ * 지도타입 바꾸기 1
+ */
 var currentTypeId;
 
 function setOverlayMapTypeId(maptype){
@@ -127,4 +130,41 @@ function setOverlayMapTypeId(maptype){
     map.addOverlayMapTypeId(changeMaptype);
 
     currentTypeId = changeMaptype;
+}
+
+var mapTypes = {
+    terrain: kakao.maps.MapTypeId.TERRAIN,
+    traffic: kakao.maps.MapTypeId.TRAFFIC,
+    bicycle: kakao.maps.MapTypeId.BICYCLE,
+    useDistrict: kakao.maps.MapTypeId.USE_DISTRICT
+}
+
+/**
+ * 지도타입 바꾸기 2
+ */
+function setOverlayMapTypeId2(){
+    var chkTerrain = document.getElementById('chkTerrain');
+    var chkTraffic = document.getElementById('chkTraffic');
+    var chkBicycle = document.getElementById('chkBicycle');
+    var chkUseDistrict = document.getElementById('chkUseDistrict');
+
+    for(var type in mapTypes){
+        map.removeOverlayMapTypeId(mapTypes[type]);
+    }
+
+    if(chkUseDistrict.checked){
+        map.addOverlayMapTypeId(mapTypes.useDistrict);
+    }
+
+    if(chkTerrain.checked){
+        map.addOverlayMapTypeId(mapTypes.terrain);
+    }
+
+    if(chkTraffic.checked){
+        map.addOverlayMapTypeId(mapTypes.traffic);
+    }
+
+    if(chkBicycle.checked){
+        map.addOverlayMapTypeId(mapTypes.bicycle);
+    }
 }

@@ -38,6 +38,13 @@
         <button onclick="setOverlayMapTypeId('use_district')">지적편집도 보기</button>
     </p>
 
+    <p>
+        <input type="checkbox" id="chkUseDistrict" onclick="setOverlayMapTypeId2()" /> 지적편집도 정보 보기
+        <input type="checkbox" id="chkTerrain" onclick="setOverlayMapTypeId2()" /> 지형정보 보기
+        <input type="checkbox" id="chkTraffic" onclick="setOverlayMapTypeId2()" /> 교통정보 보기
+        <input type="checkbox" id="chkBicycle" onclick="setOverlayMapTypeId2()" /> 자전거도로 정보 보기
+    </p>
+
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6c277efa157f10bac26a42539398589&libraries=services,clusterer,drawing"></script>
     <script th:src="@{/js/main/kakaoMain.js}"></script>
 </body>
