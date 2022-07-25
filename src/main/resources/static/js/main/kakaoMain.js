@@ -6,6 +6,15 @@ var options = { //지도를 생성할 때 필요한 기본 옵션
 
 var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 
+//지도, 스카이뷰
+var mapTypeControl = new kakao.maps.MapTypeControl();
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+//확대 축소 제어하는 줌 컨트롤 생성
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.CENTERRIGHT);
+//TOPRIGHT, BOTTOMRIGHT 등으로 표시될 위치 정의
+
 displayLevel();
 
 getInfo();
