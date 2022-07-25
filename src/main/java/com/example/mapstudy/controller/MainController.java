@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Log4j2
 public class MainController {
 
-    @GetMapping("/ex1")
+    @GetMapping("/kakaoMain")
     public void ex1(){
-        log.info("ex01...............");
+        log.info("kakaoMain...............");
     }
 }
