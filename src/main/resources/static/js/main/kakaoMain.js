@@ -281,3 +281,12 @@ kakao.maps.event.addListener(map, 'center_changed', function (){
     resultDiv.innerHTML = message;
 });
 
+/**
+ * 타일로드 이벤트 등록
+ */
+kakao.maps.event.addListener(map, 'tilesloaded', displayMarker);
+
+function displayMarker(){
+    marker.setPosition(map.getCenter());
+    marker.setMap(map);
+}
