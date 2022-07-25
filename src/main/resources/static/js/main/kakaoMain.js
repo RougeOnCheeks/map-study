@@ -132,6 +132,9 @@ function setOverlayMapTypeId(maptype){
     currentTypeId = changeMaptype;
 }
 
+/**
+ * 지도타입 바꾸기 2
+ */
 var mapTypes = {
     terrain: kakao.maps.MapTypeId.TERRAIN,
     traffic: kakao.maps.MapTypeId.TRAFFIC,
@@ -139,9 +142,6 @@ var mapTypes = {
     useDistrict: kakao.maps.MapTypeId.USE_DISTRICT
 }
 
-/**
- * 지도타입 바꾸기 2
- */
 function setOverlayMapTypeId2(){
     var chkTerrain = document.getElementById('chkTerrain');
     var chkTraffic = document.getElementById('chkTraffic');
@@ -167,4 +167,31 @@ function setOverlayMapTypeId2(){
     if(chkBicycle.checked){
         map.addOverlayMapTypeId(mapTypes.bicycle);
     }
+}
+
+/**
+ * 지도 범위 재설정
+ */
+var points = [
+    new kakao.maps.LatLng(33.452278, 126.567803),
+    new kakao.maps.LatLng(33.452671, 126.574792),
+    new kakao.maps.LatLng(33.451744, 126.572441)
+]; //좌표 기준 지도 범위 표출
+
+//지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성
+var bounds = new kakao.maps.LatLngBounds();
+
+var i, marker;
+for(i = 0; i < points.length; i++){
+    //배열의 좌표들이 잘 보이게 마커를 지도에 추가
+    marker = new kakao.maps.Marker({position: points[i]});
+    marker.setMap(map);
+
+    //LatLngBounds 객체에 좌표 추가
+    bounds.extend(points[i]);
+}
+
+function setBounds(){
+    //재설정 시 지도의 중심좌표와 레벨이 변경될 수 있다.
+    map.setBounds(bounds);
 }
