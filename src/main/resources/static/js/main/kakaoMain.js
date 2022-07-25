@@ -16,9 +16,16 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.CENTERRIGHT);
 //TOPRIGHT, BOTTOMRIGHT 등으로 표시될 위치 정의
 
 //교통정보 표시하기
-map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+//map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 //교통정보 제거하기
-//map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+
+//로드뷰 도로 표시
+map.addOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
+
+//지형도 표시
+//map.addOverlayMapTypeId(kakao.maps.MapTypeId.TERRAIN);
+map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TERRAIN);
 
 displayLevel();
 
