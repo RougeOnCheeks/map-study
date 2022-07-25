@@ -7,8 +7,12 @@
 </head>
 <body>
     <div id="map" style="width:500px;height:400px;"></div>
+    <p>
+        <button onclick="setCenter()">지도 중심좌표 이동</button>
+        <button onclick="panTo()">지도 중심좌표 부드럽게 이동</button>
+    </p>
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6c277efa157f10bac26a42539398589"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6c277efa157f10bac26a42539398589&libraries=services,clusterer,drawing"></script>
     <script th:src="@{/js/main/kakaoMain.js}"></script>
 </body>
 </html>
