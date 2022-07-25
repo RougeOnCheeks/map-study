@@ -222,6 +222,9 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent){
     messageEl.innerText = message;
 });
 
+/**
+ * 클릭한 위치에 마커 표시
+ */
 var marker = new kakao.maps.Marker({
     position: map.getCenter()
 });
@@ -238,4 +241,43 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent){
 
     var resultDiv = document.getElementById('clickLatlng');
     resultDiv.innerHTML = message;
-})
+});
+
+/**
+ * 이동 이벤트 등록
+ */
+kakao.maps.event.addListener(map, 'dragend', function (){
+    var latlng = map.getCenter();
+
+    var message = `변경된 지도 중심좌표의 위도 : ${latlng.getLat()},`;
+    message += ` 경도: ${latlng.getLng()}`;
+
+    var resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = message;
+});
+
+/**
+ * 확대, 축소 이벤트 등록
+ */
+kakao.maps.event.addListener(map, 'zoom_changed', function (){
+    var level = map.getLevel();
+
+    var message = `현재 지도 레벨: ${level}`;
+    var resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = message;
+});
+
+/**
+ * 중심좌표 변경 이벤트 등록: 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트 등록
+ */
+kakao.maps.event.addListener(map, 'center_changed', function (){
+    var level = map.getLevel();
+    var latlng = map.getCenter();
+
+    var message = `현재 지도 레벨: ${level}\n`;
+    message += `중심좌표의 위도 : ${latlng.getLat()}, 경도: ${latlng.getLng()}`;
+
+    var resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = message;
+});
+
