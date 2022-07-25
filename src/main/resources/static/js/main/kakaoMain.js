@@ -1,6 +1,6 @@
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 var options = { //지도를 생성할 때 필요한 기본 옵션
-    center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표. 지도를 생성하는데 반드시 필요
+    center: new kakao.maps.LatLng(37.479103, 127.037444), //지도의 중심좌표. 지도를 생성하는데 반드시 필요
     level: 3 //지도의 레벨(확대, 축소 정도)
 };
 
@@ -195,3 +195,47 @@ function setBounds(){
     //재설정 시 지도의 중심좌표와 레벨이 변경될 수 있다.
     map.setBounds(bounds);
 }
+
+/**
+ * 지도영역 크기 동적 변경
+ */
+function resizeMap(){
+    var mapContainer = document.getElementById('map');
+    mapContainer.style.width = '300px';
+    mapContainer.style.height = '200px';
+}
+
+function relayout(){
+    // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 함
+    map.relayout();
+}
+
+/**
+ * 클릭 이벤트 등록
+ */
+kakao.maps.event.addListener(map, 'click', function (mouseEvent){
+    var latlng = mouseEvent.latLng;
+    var message = `클릭한 위치의 위도: ${latlng.getLat()},`;
+    message += ` 경도: ${latlng.getLng()}`;
+
+    var messageEl = document.getElementById("getInfo");
+    messageEl.innerText = message;
+});
+
+var marker = new kakao.maps.Marker({
+    position: map.getCenter()
+});
+
+marker.setMap(map);
+
+kakao.maps.event.addListener(map, 'click', function (mouseEvent){
+    var latlng = mouseEvent.latLng;
+
+    marker.setPosition(latlng);
+
+    var message = `클릭한 위치의 위도: ${latlng.getLat()},`;
+    message += ` 경도: ${latlng.getLng()}`;
+
+    var resultDiv = document.getElementById('clickLatlng');
+    resultDiv.innerHTML = message;
+})

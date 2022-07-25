@@ -49,6 +49,13 @@
         <button onclick="setBounds()">지도 범위 재설정 하기</button>
     </p>
 
+    <p>
+        <button onclick="resizeMap()">지도 크기 바꾸기</button>
+        <button onclick="relayout()">relayout 호출하기</button>
+    </p>
+
+    <div id="clickLatlng"></div>
+
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6c277efa157f10bac26a42539398589&libraries=services,clusterer,drawing"></script>
     <script th:src="@{/js/main/kakaoMain.js}"></script>
 </body>
