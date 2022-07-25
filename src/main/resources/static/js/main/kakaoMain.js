@@ -88,3 +88,7 @@ function getInfo(){
     var messageEl = document.getElementById("getInfo");
     messageEl.innerText = message;
 }
+
+function setDraggable(draggable){
+    map.setDraggable(draggable);
+}
