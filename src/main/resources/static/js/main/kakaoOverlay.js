@@ -18,7 +18,8 @@ var markerPosition = new kakao.maps.LatLng(37.54699, 127.09598);
 //마커 생성
 var marker = new kakao.maps.Marker({
     position: markerPosition,
-    image: markerImage
+    image: markerImage,
+    clickable: true //마커 클릭 시 지도의 클릭 이벤트 발생하지 않도록 설정
 });
 
 //마커 표시
@@ -30,3 +31,30 @@ marker.setMap(map);
 //드래그 가능한 마커 생성
 marker.setDraggable(true);
 
+//인포윈도우: 표시할 제목, 좌표 넣으면 링크에서 표출
+var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/야구장,37.54699,127.09598" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/야구장,37.54699,127.09598" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+//var iwContent = `<div style="padding:5px;">Hello World!</div>`,
+    //iwPosition = new kakao.maps.LatLng(37.54699, 127.09598), //인포윈도우 표시할 좌표
+    iwRemovable = true; //인포윈도우 x 버튼
+
+var infowindow = new kakao.maps.InfoWindow({
+   //map: map,
+   //position: iwPosition,
+   content: iwContent,
+   removable: iwRemovable
+});
+
+//마커에 클릭이벤트 등록: 클릭시 인포 윈도우 표출
+kakao.maps.event.addListener(marker, 'click', function (){
+    infowindow.open(map, marker);
+});
+
+//마커에 마우스오버 이벤트 등록
+kakao.maps.event.addListener(marker, 'mouseover', function (){
+    infowindow.open(map, marker);
+});
+
+//마커에 마우스아웃 이벤트 등록
+kakao.maps.event.addListener(marker, 'mouseout', function(){
+    infowindow.close();
+})
