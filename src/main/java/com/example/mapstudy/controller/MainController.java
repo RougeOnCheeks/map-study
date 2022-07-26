@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @GetMapping("/kakaoMain")
-    public void ex1(){
-        log.info("kakaoMain...............");
+    public void kakaoMain(){
+        log.info("kakaoMain page");
+    }
+
+    @GetMapping("/kakaoOverlay")
+    public void kakaoOverlay(){
+        log.info("/kakaoOverlay page");
     }
 }
