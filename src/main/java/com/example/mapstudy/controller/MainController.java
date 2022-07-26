@@ -6,17 +6,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/main")
+@RequestMapping("/kakaoMain")
 @Log4j2
 public class MainController {
 
-    @GetMapping("/kakaoMain")
+    @GetMapping("/map")
     public void kakaoMain(){
-        log.info("kakaoMain page");
+        log.info("map page");
     }
 
-    @GetMapping("/kakaoOverlay")
+    @GetMapping("/marker")
     public void kakaoOverlay(){
-        log.info("/kakaoOverlay page");
+        log.info("marker page");
+    }
+
+    @GetMapping("/multipleMarker")
+    public void kakaoOverlay2(){
+        log.info("multipleMarker page");
     }
 }

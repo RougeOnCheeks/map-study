@@ -57,4 +57,4 @@ kakao.maps.event.addListener(marker, 'mouseover', function (){
 //마커에 마우스아웃 이벤트 등록
 kakao.maps.event.addListener(marker, 'mouseout', function(){
     infowindow.close();
-})
+});
