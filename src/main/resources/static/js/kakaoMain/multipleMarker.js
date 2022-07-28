@@ -1,30 +1,30 @@
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+const mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-// // 마커를 표시할 위치와 title 객체 배열입니다
-// var positions = [
-//     {
-//         title: '카카오',
-//         latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-//     },
-//     {
-//         title: '생태연못',
-//         latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-//     },
-//     {
-//         title: '텃밭',
-//         latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-//     },
-//     {
-//         title: '근린공원',
-//         latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-//     }
-// ];
+// 마커를 표시할 위치와 title 객체 배열입니다
+const positions = [
+    {
+        title: '<div>카카오</div>',
+        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+    },
+    {
+        title: '<div>생태연못</div>',
+        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+    },
+    {
+        title: '<div>텃밭</div>',
+        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
+    },
+    {
+        title: '<div>근린공원</div>',
+        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
+    }
+];
 // //마커 이미지 소스
 // var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 //
@@ -39,34 +39,63 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 //         image: markerImage
 //     });
 // }
+const makeOverListener = (map, marker, infowindow) => {
+    return function () {
+        infowindow.open(map, marker);
+    }
+};
 
-kakao.maps.event.addListener(map, 'click', function(mouseEvent){
-    addMarker(mouseEvent.latLng);
-});
-
-var markers = [];
-
-addMarker(new kakao.maps.LatLng(33.450701, 126.570667));
-
-function addMarker(position){
-    var marker = new kakao.maps.Marker({
-        position: position
-    });
-
-    marker.setMap(map);
-    markers.push(marker);
-}
-
-function setMarkers(map){
-    for(var i in markers){
-        markers[i].setMap(map);
+const makeOutListener = (infowindow) => {
+    return function (){
+        infowindow.close();
     }
 }
 
-function showMarkers(){
-    setMarkers(map);
+for(let i in positions){
+    const marker = new kakao.maps.Marker({
+        map: map,
+        position: positions[i].latlng
+    });
+
+    const infowindow = new kakao.maps.InfoWindow({
+        content: positions[i].title
+    });
+
+    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 }
 
-function hideMarkers(){
-    setMarkers(null);
-}
+
+
+//
+//
+// kakao.maps.event.addListener(map, 'click', function(mouseEvent){
+//     addMarker(mouseEvent.latLng);
+// });
+//
+// const markers = [];
+//
+// addMarker(new kakao.maps.LatLng(33.450701, 126.570667));
+//
+// function addMarker(position){
+//     var marker = new kakao.maps.Marker({
+//         position: position
+//     });
+//
+//     marker.setMap(map);
+//     markers.push(marker);
+// }
+//
+// function setMarkers(map){
+//     for(var i in markers){
+//         markers[i].setMap(map);
+//     }
+// }
+//
+// function showMarkers(){
+//     setMarkers(map);
+// }
+//
+// function hideMarkers(){
+//     setMarkers(null);
+// }
