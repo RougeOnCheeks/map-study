@@ -24,4 +24,9 @@ public class MainController {
     public void kakaoOverlay2(){
         log.info("multipleMarker page");
     }
+
+    @GetMapping("/drawFigure")
+    public void drawFigure(){
+        log.info("drawFigure page");
+    }
 }
