@@ -30,6 +30,11 @@ public class MainController {
         log.info("drawFigure page");
     }
 
+    @GetMapping("/calculatePolylineDistance")
+    public void calculatePolylineDistance(){
+        log.info("calculatePolylineDistance page");
+    }
+
     @GetMapping("/calculatePolygonArea")
     public void calculatePolygonArea(){
         log.info("calculatePolygonArea page");
@@ -50,3 +55,4 @@ public class MainController {
         log.info("calculateCircleRadius page");
     }
 }
+
