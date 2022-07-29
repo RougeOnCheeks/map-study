@@ -29,4 +29,9 @@ public class MainController {
     public void drawFigure(){
         log.info("drawFigure page");
     }
+
+    @GetMapping("/calculatePolygonArea")
+    public void calculatePolygonArea(){
+        log.info("calculatePolygonArea page");
+    }
 }
