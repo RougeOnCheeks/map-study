@@ -39,4 +39,9 @@ public class MainController {
     public void addPolygonMouseEvent1(){
         log.info("addPolygonMouseEvent1 page");
     }
+
+    @GetMapping("/addPolygonMouseEvent2")
+    public void addPolygonMouseEvent2(){
+        log.info("addPolygonMouseEvent2 page");
+    }
 }
