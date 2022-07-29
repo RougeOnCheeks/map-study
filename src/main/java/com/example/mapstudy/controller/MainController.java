@@ -34,4 +34,9 @@ public class MainController {
     public void calculatePolygonArea(){
         log.info("calculatePolygonArea page");
     }
+
+    @GetMapping("/addPolygonMouseEvent1")
+    public void addPolygonMouseEvent1(){
+        log.info("addPolygonMouseEvent1 page");
+    }
 }
