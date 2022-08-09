@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapstudy.mapper.ProjectMapper">
+    <select id="selectArea" resultType="com.example.mapstudy.vo.IntersectionVO">
+        select
+               AREA_NAME as areaName,
+               AREA_LAT as areaLat,
+               AREA_LON as areaLon,
+               TRAFFIC as traffic,
+               DELAY as delay
+        from INTERSECTION_WEB
+        where "INDEX" = '306414'
+    </select>
+</mapper>
