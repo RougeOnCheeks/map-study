@@ -2,6 +2,7 @@ package com.example.mapstudy.controller;
 
 import com.example.mapstudy.service.ProjectService;
 import com.example.mapstudy.vo.IntersectionVO;
+import com.example.mapstudy.vo.SearchVO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,8 @@ public class ProjectController {
 
     @PostMapping("/mainApi")
     @ResponseBody
-    public ResponseEntity mainApi(){
-        List<IntersectionVO> list = projectService.selectArea();
+    public ResponseEntity mainApi(SearchVO searchVO){
+        List<IntersectionVO> list = projectService.selectArea(searchVO);
         return new ResponseEntity(list, HttpStatus.OK);
     }
 }

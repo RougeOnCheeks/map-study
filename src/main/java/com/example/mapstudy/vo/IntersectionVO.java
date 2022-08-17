@@ -7,6 +7,6 @@ public class IntersectionVO {
     String areaName;
     double areaLat;
     double areaLon;
-    long traffic;
+    int traffic;
     double delay;
 }
