@@ -89,5 +89,7 @@ for(let i in positions){
     addMarker(positions[i], normalOrigin, overOrigin, clickOrigin);
 }
 
+let test = 'aaaaa';
+
 
 
